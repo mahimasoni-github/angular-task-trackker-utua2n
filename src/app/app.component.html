@@ -1,0 +1,31 @@
+<h3>{{ title }}</h3>
+<input
+  type="text"
+  placeholder="Enter your task"
+  #task
+  [ngClass]="{ errorInput: error }"
+/>
+<button class="buttons" (click)="addTask(task.value)">Add new task</button
+><br />
+<p *ngIf="error" class="emptyField">{{ emptyFieldMsg }}</p>
+<ng-container *ngIf="list.length; else template">
+  <p>You have {{ count }} {{ count > 1 ? 'items' : 'item' }} to complete</p>
+  <div *ngFor="let listItem of list; let j = index">
+    <span>
+      <input
+        type="checkbox"
+        [(ngModel)]="listItem.isSelected"
+        (ngModelChange)="onUserSelection(listItem, j)"
+      />
+      <span
+        [ngStyle]="{
+          textDecoration: listItem.isSelected ? 'line-through' : ''
+        }"
+        >{{ listItem.task }}</span
+      >
+    </span>
+  </div>
+</ng-container>
+<ng-template #template>
+  {{ noTaskMsg }}
+</ng-template>

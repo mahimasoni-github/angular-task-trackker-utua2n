@@ -1,0 +1,14 @@
+p {
+  font-family: Lato;
+}
+.emptyField {
+  margin: 5px 0;
+  color: red;
+}
+.errorInput {
+  border: 1.5px solid red;
+}
+.buttons {
+  margin-left: 5px;
+  cursor: pointer;
+}
